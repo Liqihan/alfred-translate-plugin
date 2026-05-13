@@ -1,0 +1,53 @@
+name: Build Alfred Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - 'v*'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Test and package workflow
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Run tests
+        run: npm test
+
+      - name: Validate Alfred plist
+        run: plutil -lint info.plist
+
+      - name: Build Alfred workflow artifact
+        run: npm run build
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: alfred-llm-translator
+          path: alfred-llm-translator.alfredworkflow
+          if-no-files-found: error
+
+      - name: Attach artifact to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: alfred-llm-translator.alfredworkflow
