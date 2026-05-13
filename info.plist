@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>bundleid</key>
+  <string>com.github.owner.alfred-llm-translator</string>
+  <key>category</key>
+  <string>Productivity</string>
+  <key>connections</key>
+  <dict>
+    <key>scriptfilter.translate</key>
+    <array>
+      <dict>
+        <key>destinationuid</key>
+        <string>runscript.paste</string>
+        <key>modifiers</key>
+        <integer>0</integer>
+        <key>modifiersubtext</key>
+        <string></string>
+        <key>vitoclose</key>
+        <false/>
+      </dict>
+    </array>
+  </dict>
+  <key>createdby</key>
+  <string>GitHub User</string>
+  <key>description</key>
+  <string>Translate text with an OpenAI Chat Completions compatible API.</string>
+  <key>disabled</key>
+  <false/>
+  <key>name</key>
+  <string>LLM Translator</string>
+  <key>objects</key>
+  <array>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>argumenttreatemptyqueryasnil</key>
+        <false/>
+        <key>argumenttrimmode</key>
+        <integer>0</integer>
+        <key>escaping</key>
+        <integer>102</integer>
+        <key>keyword</key>
+        <string>tr</string>
+        <key>queuedelaycustom</key>
+        <integer>1</integer>
+        <key>queuedelayimmediatelyinitially</key>
+        <true/>
+        <key>queuedelaymode</key>
+        <integer>1</integer>
+        <key>runningsubtext</key>
+        <string>Translating…</string>
+        <key>script</key>
+        <string>/usr/bin/env node translate.js "{query}"</string>
+        <key>subtext</key>
+        <string>Translate text with your configured LLM</string>
+        <key>title</key>
+        <string>Translate</string>
+        <key>type</key>
+        <integer>0</integer>
+        <key>withspace</key>
+        <true/>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.input.scriptfilter</string>
+      <key>uid</key>
+      <string>scriptfilter.translate</string>
+      <key>version</key>
+      <integer>3</integer>
+    </dict>
+    <dict>
+      <key>config</key>
+      <dict>
+        <key>concurrently</key>
+        <false/>
+        <key>escaping</key>
+        <integer>102</integer>
+        <key>script</key>
+        <string>/usr/bin/env node scripts/paste.js "{query}"</string>
+        <key>type</key>
+        <integer>0</integer>
+      </dict>
+      <key>type</key>
+      <string>alfred.workflow.action.script</string>
+      <key>uid</key>
+      <string>runscript.paste</string>
+      <key>version</key>
+      <integer>2</integer>
+    </dict>
+  </array>
+  <key>readme</key>
+  <string>Run `tr &lt;text&gt;` to translate. Configure ~/.alfred-llm-translator.json before use.</string>
+  <key>uidata</key>
+  <dict>
+    <key>scriptfilter.translate</key>
+    <dict>
+      <key>xpos</key>
+      <integer>80</integer>
+      <key>ypos</key>
+      <integer>120</integer>
+    </dict>
+    <key>runscript.paste</key>
+    <dict>
+      <key>xpos</key>
+      <integer>360</integer>
+      <key>ypos</key>
+      <integer>120</integer>
+    </dict>
+  </dict>
+  <key>version</key>
+  <string>1.0.0</string>
+  <key>webaddress</key>
+  <string>https://github.com/owner/alfred-llm-translator</string>
+</dict>
+</plist>

@@ -1,0 +1,9 @@
+# Build artifacts
+*.alfredworkflow
+
+# Dependencies and local runtime files
+node_modules/
+
+# Local user secrets/config
+.alfred-llm-translator.json
+.env

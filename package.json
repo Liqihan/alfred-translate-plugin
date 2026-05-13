@@ -1,0 +1,23 @@
+{
+  "name": "alfred-llm-translator",
+  "version": "1.0.0",
+  "description": "Alfred workflow for translating text with an OpenAI Chat Completions compatible API.",
+  "main": "translate.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build-workflow.js"
+  },
+  "keywords": [
+    "alfred",
+    "workflow",
+    "translation",
+    "openai",
+    "chat-completions"
+  ],
+  "author": "GitHub User",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
